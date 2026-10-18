@@ -1,0 +1,197 @@
+MANUAL DE USUARIO - EPSON RESET
+Adjustment Program / Waste Ink Pad Counter Reset
+Version RAW 1.0.1.1
+Modelos integrados: L1210 | L3210 | L3250 | L3251 | L3260 | L5290 RAW
+Windows 7 / 8 / 8.1 / 10 / 11 (32 y 64 bits)
+==============================================================
+
+INDICE
+1. Introduccion
+2. Modelos soportados
+3. Requisitos previos y advertencias
+4. Preparacion: USB + Administrador
+5. Procedimiento paso a paso (Paso 1 al 6)
+6. Verificacion final
+7. Solucion de problemas
+8. Preguntas frecuentes
+9. Contacto y soporte
+
+--------------------------------------------------------------
+1. INTRODUCCION
+--------------------------------------------------------------
+Bienvenido al Manual de Usuario de la aplicacion Epson Reset.
+Esta aplicacion permite restablecer el contador de la
+almohadilla de tinta residual (Waste Ink Pad Counter) cuando
+su impresora muestra:
+ - "Se requiere servicio" / "Service required"
+ - "Almohadilla de tinta al final de su vida util"
+ - Luces de tinta y papel parpadeando alternadamente.
+
+Con este procedimiento devuelve el contador a 0% y puede
+seguir imprimiendo con normalidad.
+
+Este manual INTEGRA TODAS LAS VERSIONES que soporta la
+aplicacion en un solo documento: L1210, L3210, L3250,
+L3251, L3260 y L5290 RAW. No necesita manuales separados:
+el procedimiento es el mismo, solo cambia el modelo que
+elige en el boton Select.
+
+NOTA: El reseteo es por software. Si la almohadilla fisica
+esta muy saturada (derrame), reemplacela o ponga desfogue
+externo con su tecnico.
+
+--------------------------------------------------------------
+2. MODELOS SOPORTADOS
+--------------------------------------------------------------
+La aplicacion RAW 1.0.1.1 soporta integralmente:
+
+ - L1210 ..... EcoTank tinta continua A4 ........ Elegir: L1210
+ - L3210 ..... EcoTank multifuncional ........... Elegir: L3210
+ - L3250 ..... EcoTank WiFi multifuncional ...... Elegir: L3250
+ - L3251 ..... Variante regional de L3250 ....... Elegir: L3251
+ - L3260 ..... EcoTank WiFi + Duplex ............ Elegir: L3260
+ - L5290 RAW . EcoTank 4 en 1 + ADF + Fax ...... Elegir: L5290
+
+Verifique la etiqueta frontal o trasera de su impresora
+antes de elegir. Si elige modelo incorrecto dara error
+de comunicacion.
+
+--------------------------------------------------------------
+3. REQUISITOS PREVIOS Y ADVERTENCIAS
+--------------------------------------------------------------
+Requisitos:
+ * PC con Windows 7, 8, 8.1, 10 u 11.
+ * Cable USB en buen estado, corto, a puerto USB 2.0 trasero (no hub).
+ * Impresora encendida, con papel, sin trabajos en cola.
+ * Archivos en la misma carpeta: AdjProg.exe (o AdjProg_Win10_x64ready.exe)
+   + apdadrv.dll + StrGene.dll.
+ * Cierre Epson Status Monitor y otros programas Epson.
+
+ADVERTENCIA - LEA ANTES:
+ 1) Use solo cable USB, NO WiFi para el reseteo.
+ 2) No desconecte cable ni apague la PC durante Check / Initialize.
+ 3) Ejecute SIEMPRE como Administrador, si no falla el puerto USB00x.
+ 4) Desactive antivirus o agregue la carpeta a exclusiones.
+
+--------------------------------------------------------------
+4. PREPARACION
+--------------------------------------------------------------
+Para usar la aplicacion debes conectar el cable USB de tu
+impresora a la computadora. Enciende la impresora y espera
+a que Windows la reconozca. Usa puerto USB 2.0 directo,
+evita hubs y cables largos.
+
+Despues hay que ejecutar la aplicacion como Administrador:
+clic derecho sobre AdjProg.exe (o AdjProg_Win10_x64ready.exe
+o INICIAR_AdjProg_Win8_10_x64.bat) > Ejecutar como
+administrador > Aceptar. Sin este permiso no abre el puerto
+USB ni lee la EEPROM.
+
+Consejo Win10/11 x64: usa el lanzador .bat incluido, ya
+aplica compatibilidad WIN7RTM + desbloqueo + admin solo.
+
+--------------------------------------------------------------
+5. PROCEDIMIENTO PASO A PASO
+--------------------------------------------------------------
+Siga este orden exacto. Es identico para L1210, L3210,
+L3250, L3251, L3260 y L5290 RAW, solo cambia el modelo.
+
+PASO 1: Base obligatoria
+ - Conecte USB impresora -> PC, encienda impresora.
+ - Ejecute la aplicacion como Administrador.
+
+PASO 2: Select + Modelo + Puerto
+ - Paso 2: Presionar Boton Select y elegir el modelo de
+   Impresora Correspondiente (ej. L3250 si su equipo es L3250).
+ - En Puerto hay que elegir USB00x (USB001, USB002 o Auto).
+ - Pulse OK. Si no aparece USB, revise cable, driver Epson
+   oficial y que la impresora este encendida.
+
+PASO 3: Particular Adjustment Mode
+ - Paso 3: Pulsar sobre el boton Particular Adjustment Mode.
+ - Se abrira la lista de funciones de mantenimiento.
+   No toque otras opciones.
+
+PASO 4: Waste Ink Pad Counter
+ - Paso 4: seleccionar Waste Ink Pad Counter.
+ - Pulse OK. Vera Main pad counter, Platen pad counter
+   e Ink system pad counter.
+
+PASO 5: Marcar 3 casillas + Check
+ - Paso 5: seleccionar las 3 casillas y pulsar sobre el
+   boton Check.
+ - Esperar a que muestre el porcentaje de vida
+   (ej. 100%, 85%). Eso confirma que llego al limite.
+ - No cierre la ventana, continue al Paso 6.
+
+PASO 6: Marcar 3 casillas + Initialize + Apagado
+ - Paso 6: Vuelve a seleccionar las 3 casillas y pulsa
+   sobre el boton Initialize.
+ - Una vez que hayas pulsado aparecera un nuevo cuadro
+   de dialogo: Presiona Ok y despues apaga tu Impresora,
+   despues pulsa sobre Finish y Listo.
+ - Detalle:
+   1) Marque las 3 casillas de nuevo.
+   2) Clic Initialize.
+   3) En el dialogo pulse OK.
+   4) Apague su impresora con boton Power (espere 10 seg).
+   5) Pulse Finish / Reiniciar, cierre el programa.
+   6) Pruebe nozzle check / impresion.
+
+RESULTADO ESPERADO: al hacer Check de nuevo debe mostrar
+0.00% o cercano a 0%. Las luces dejan de parpadear.
+
+--------------------------------------------------------------
+6. VERIFICACION FINAL
+--------------------------------------------------------------
+ * Imprima pagina de prueba para confirmar que se fue el error.
+ * Si persiste, repita Paso 5 y 6 marcando las 3 casillas
+   AMBAS veces.
+ * Si no apaga la impresora cuando se pide, el reseteo NO
+   se guarda. Apagar/encender es obligatorio.
+
+--------------------------------------------------------------
+7. SOLUCION DE PROBLEMAS
+--------------------------------------------------------------
+ - No aparece USB00x: cambie cable/puerto USB 2.0 trasero,
+   reinstale driver Epson oficial, ejecute como admin.
+ - Se cierra solo: use AdjProg_Win10_x64ready.exe o .bat,
+   compat WIN7RTM, desbloquee archivos, agregue exclusion antivirus.
+ - Communication error: eligio modelo incorrecto en Select.
+   Elija su modelo exacto (L3250 no es L3251).
+ - Check 0% pero sigue error: haga Initialize + apague 15 seg
+   + Finish, desconecte 1 min y encienda.
+ - Pide key: esta edicion RAW 1.0.1.1 no pide key, use el exe
+   de su carpeta.
+ - Ventanas negras: aplique DPIUNAWARE / HIGHDPIAWARE via .bat.
+
+--------------------------------------------------------------
+8. PREGUNTAS FRECUENTES
+--------------------------------------------------------------
+ P: Sirve para todos a la vez?
+ R: Si, integra L1210, L3210, L3250, L3251, L3260 y L5290 RAW.
+ P: Puedo usar WiFi?
+ R: No, solo cable USB para resetear.
+ P: Cada cuanto se hace?
+ R: Solo cuando pida almohadilla llena (cada 20-30 mil pags aprox).
+ P: Funciona en Win 11?
+ R: Si, como administrador y con lanzador compatible.
+ P: Pierdo garantia?
+ R: No dana el equipo, pero si esta en garantia consulte a Epson.
+
+--------------------------------------------------------------
+9. CONTACTO Y SOPORTE
+--------------------------------------------------------------
+Cualquier duda contactanos y con gusto te ayudaremos.
+
+Si tienes preguntas sobre tu modelo (L1210, L3210, L3250,
+L3251, L3260 o L5290), puerto USB00x, botones Check /
+Initialize o apagado final, escribenos indicando:
+ 1) Modelo exacto
+ 2) Version de Windows (10/11)
+ 3) Foto o mensaje del error
+
+Con esos datos te ayudamos a completar tu reseteo rapido.
+
+Gracias por usar Epson Reset RAW 1.0.1.1.
+FIN DEL MANUAL - L1210 / L3210 / L3250 / L3251 / L3260 / L5290 RAW

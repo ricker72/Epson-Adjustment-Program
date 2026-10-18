@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Manual Epson Reset L1210-L5290</title><style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Arial,sans-serif;background:#eef2f7;color:#1e2126;line-height:1.6}
+.hero{background:linear-gradient(135deg,#1e40af,#2f7cf6);color:#fff;text-align:center;padding:48px 20px}
+.hero h1{font-size:42px}.hero h2{font-size:26px;margin:6px 0}.hero p{opacity:.9}
+.badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.badge{background:#fff;color:#1e40af;font-weight:700;padding:8px 18px;border-radius:20px;font-size:14px}
+.wrap{max-width:900px;margin:-20px auto 40px;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden}
+.sec{padding:28px 32px;border-bottom:1px solid #e5e7eb}.sec h2{background:#2f7cf6;color:#fff;padding:10px 16px;border-radius:8px;font-size:20px;margin-bottom:14px}
+.paso{background:#eff4ff;border:2px solid #2f7cf6;border-radius:10px;padding:16px;margin:12px 0}.paso h3{color:#1e40af;margin-bottom:6px}
+.warn{background:#fffbeb;border:2px solid #f59e0b;border-radius:10px;padding:16px;margin:12px 0}.ok{background:#ecfdf5;border:2px solid #16a34a;border-radius:10px;padding:16px;margin:12px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0}th{background:#2f7cf6;color:#fff;padding:10px}td{padding:10px;border:1px solid #ddd}tr:nth-child(even){background:#eff4ff}
+ul{margin:8px 0 8px 20px}.foot{text-align:center;padding:24px;background:#1e2126;color:#fff}
+@media print{.hero{padding:20px}.wrap{box-shadow:none;margin:0;max-width:100%}}
+</style></head><body>
+<div class="hero"><p>EPSON</p><h1>MANUAL DE USUARIO</h1><h2>Epson Reset</h2><p>Adjustment Program / Waste Ink Pad Counter Reset — RAW 1.0.1.1</p><div class="badges"><span class="badge">L1210</span><span class="badge">L3210</span><span class="badge">L3250</span><span class="badge">L3251</span><span class="badge">L3260</span><span class="badge">L5290 RAW</span></div></div>
+<div class="wrap">
+<div class="sec"><h2>1. Introduccion</h2><p>Bienvenido al Manual de Usuario de la aplicacion <b>Titulo Epson Reset</b>. Esta aplicacion restablece el contador de almohadilla de tinta residual cuando aparece <i>"Se requiere servicio"</i> o parpadean las luces de tinta y papel.</p><p><b>Integra todas las versiones que soporta la aplicacion: L1210, L3210, L3250, L3251, L3260, L5290 RAW</b> en un solo documento.</p></div>
+<div class="sec"><h2>2. Modelos Soportados</h2><table><tr><th>Modelo</th><th>Tipo</th><th>Elegir en Select</th></tr><tr><td><b>L1210</b></td><td>EcoTank A4</td><td>L1210</td></tr><tr><td><b>L3210</b></td><td>EcoTank Multifuncional</td><td>L3210</td></tr><tr><td><b>L3250</b></td><td>EcoTank WiFi</td><td>L3250</td></tr><tr><td><b>L3251</b></td><td>Variante L3250</td><td>L3251</td></tr><tr><td><b>L3260</b></td><td>EcoTank WiFi Duplex</td><td>L3260</td></tr><tr><td><b>L5290 RAW</b></td><td>4 en 1 + ADF + Fax</td><td>L5290</td></tr></table></div>
+<div class="sec"><h2>3. Requisitos</h2><ul><li>Windows 7/8/8.1/10/11</li><li>Cable USB bueno a puerto USB 2.0 (no hub, no WiFi)</li><li>Impresora encendida con papel</li><li>Archivos: AdjProg.exe + apdadrv.dll + StrGene.dll juntos</li></ul><div class="warn"><b>ADVERTENCIA:</b> Use solo USB. No desconecte durante Check/Initialize. Ejecute siempre como Administrador.</div></div>
+<div class="sec"><h2>4. Procedimiento Paso a Paso</h2>
+<div class="paso"><h3>PASO 1: Conexion + Administrador</h3><p>Para usar la aplicacion debes conectar el cable USB de tu impresora a la computadora. Despues hay que ejecutar la aplicacion como Administrador (clic derecho &gt; Ejecutar como administrador).</p></div>
+<div class="paso"><h3>PASO 2: Select + Modelo + Puerto</h3><p>Paso 2: Presionar Boton Select y elegir el modelo de Impresora Correspondiente. En Puerto hay que elegir USB00x. Pulse OK.</p></div>
+<div class="paso"><h3>PASO 3: Particular Adjustment Mode</h3><p>Paso 3: Pulsar sobre el boton Particular Adjustment Mode.</p></div>
+<div class="paso"><h3>PASO 4: Waste Ink Pad Counter</h3><p>Paso 4: seleccionar Waste Ink Pad Counter y pulsar OK.</p></div>
+<div class="paso"><h3>PASO 5: 3 Casillas + Check</h3><p>Paso 5: seleccionar las 3 casillas y pulsar sobre el boton Check. Esperar a que muestre el porcentaje de vida.</p></div>
+<div class="paso"><h3>PASO 6: 3 Casillas + Initialize + Apagado</h3><p>Paso 6: Vuelve a seleccionar las 3 casillas y pulsa sobre el boton Initialize. Una vez que hayas pulsado aparecera un nuevo cuadro de dialogo: Presiona Ok y despues apaga tu Impresora, despues pulsa sobre Finish y Listo.</p></div>
+<div class="ok"><b>RESULTADO:</b> Al hacer Check de nuevo debe mostrar 0.00%. Las luces dejan de parpadear.</div>
+</div>
+<div class="sec"><h2>5. Solucion de Problemas</h2><ul><li><b>No aparece USB:</b> cambie cable/puerto, reinstale driver, ejecute como admin.</li><li><b>Se cierra solo:</b> use AdjProg_Win10_x64ready.exe o .bat lanzador.</li><li><b>Communication error:</b> modelo incorrecto en Select.</li><li><b>Pide key:</b> esta edicion RAW 1.0.1.1 no pide key.</li></ul></div>
+<div class="sec"><h2>6. Contacto</h2><p><b>Cualquier duda contactanos y con gusto te ayudaremos.</b></p><p>Indicanos: modelo exacto, version de Windows y foto del error para ayudarte rapido.</p></div>
+</div><div class="foot">Manual Epson Reset — L1210 / L3210 / L3250 / L3251 / L3260 / L5290 RAW — v1.0.1.1 — Octubre 2026</div>
+</body></html>

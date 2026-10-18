@@ -1,0 +1,23 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+;  AdjProg - Fix compatibilidad Windows 8 / 8.1 / 10 / 11 + x64 (WOW64)
+;  Doble clic para aplicar. Corrige crash al abrir / cerrar inmediato.
+;  Ajusta la ruta si tu carpeta es distinta.
+; ============================================================
+
+; --- 1. Capa de compatibilidad: WIN7RTM es la unica estable para este MFC viejo ---
+; NO usar WINXPSP3/VISTARTM en Win10/11: provoca cierre inmediato por GetVersionEx
+[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
+"C:\\Users\\samatha\\OneDrive\\Desktop\\L1210, L3210, L3250, L3251, L3260, L5290 RAW 1.0.1.1\\AdjProg.exe"="WIN7RTM HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE DISABLEFULLSCREENOPTIMIZATIONS DPIUNAWARE"
+
+; --- 2. Desactivar escalado DPI completo (fix ventanas negras / texto cortado) ---
+[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
+; (misma clave, valor con DPIUNAWARE ya incluido arriba)
+
+; --- 3. Permitir driver USB Epson en Win10 x64 (apdadrv usa SETUPAPI + USB) ---
+; Desactiva instalacion automatica bloqueada de drivers no firmados solo para este uso
+; (No desactiva Secure Boot, solo facilita deteccion USB)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Printers]
+; (sin cambios, marcador para que el spooler re-enumere)
+

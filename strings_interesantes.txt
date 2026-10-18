@@ -1,0 +1,97 @@
+Replacemnt (EEPROM Copy NG)
+EEPROM
+Adjustment Program
+--- Model = 
+Waste Ink Flushing
+3D-Print PW Adjustment
+Cleaning/Ink Charge
+SSCO Adjustment
+Paper Skew Adjustment
+CD-R Print Counter Clear
+PG offset value Adjustment
+Touch pannel Adjustment
+PF Timing-belt tension Adjustment
+CR Timing-belt tension Adjustment
+Cleaning/Ink Charge (When Using User INK)
+Cleaning/Ink Charge (When Using Service INK)
+Page Counter Read/Write
+MSA Adjustment
+Latch Adjustment
+Bottom Mist Adjustment
+EEPROM dump
+Head ID input
+Ink charge
+Waste ink pad counter
+EEPROM Data Copy
+---- Adjustment ----
+EEPROM Read/Write
+Cleaning
+PFPAdjustment
+EEPROM data file
+EPSON Adjustment Program
+Model:
+Adjustment Program Ver. %s  build %d
+Counter Initialization
+Adjustment
+Cleaning...
+The EEPROM data has been written properly.
+Cleaning impossible error.
+AEEPROM
+- Main-board changed, but failure occur during copy EEPROM data
+Cleaning flag set
+EEPROM 
+EEPROM_COPY
+EEPROM_INITIALIZE
+EEPROM_READOUT
+Model Name
+Head ID
+Initialize EEPROM data now...
+Model Name (Device ID) : "
+Backup EEPROM data now...
+Writing EEPROM data now...
+EEPROM data
+EEPROM data copy
+The EEPROM data was not able to be read.
+Model name :  %s
+The EEPROM data was not able to be restored.
+The EEPROM data copy function has completed properly.
+Did "EEPROM data copy" (Backup/Restore) function succeed
+Adjustment value initialize
+EEPROM initialize (except adjustment value)
+The EEPROM data has been save to file properly.
+Head ID Input
+Head ID (%d digits)
+The head ID has been written in EEPROM properly.
+Head ID = 
+CInkPadCounterPage
+The Bi-D adjustment value has been written in EEPROM properly.
+CMechaAdjustmentPage
+CPGAdjustmentPage
+CPWAdjustmentPage2
+Adjustment pattern could not printed.
+Invalid Head ID is registered. 
+When Serial No. input, execute EEPROM initialize at the same time.
+Waste ink pad counter overflow error.
+Cleaning Impossible.
+Cleaning failure.
+Please select Model Name.
+SelectModelDlg
+ModelName
+2. Perform Powerful Head Cleaning
+Reply EEPROM Data Error
+TOF_BOF Adjustment
+TOF Adjustment
+BOF Adjustment
+PF Band Adjustment : BK = %+-03d / CL = %+-03d
+Bi-d Adjustment
+PF MW Adjustment = %+03d
+PF Bottom Adjustment = %+03d
+QueryPerformanceCounter
+.?AVCCleaningDlg@@
+.?AVCHeadCleaning@@
+.?AVCInkPadCounterPage@@
+.?AVCMechaAdjustmentPage@@
+.?AVCPGAdjustmentPage@@
+.?AVCPWAdjustmentPage2@@
+.?AVCSelectModelDlg@@
+.?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@
