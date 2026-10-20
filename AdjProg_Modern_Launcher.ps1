@@ -70,7 +70,7 @@ function Refresh-St {
   $t = Get-Target
   Write-St ("EXE: {0} ({1} bytes)" -f (Split-Path $t -Leaf), (Get-Item $t).Length)
   Write-St ("Admin: {0}" -f ($(if (Is-Admin) { 'SI' } else { 'NO (se pedira)' })))
-  Write-St ("Windows: {0}" -f ($(if ($env:'ProgramFiles(x86)') { 'x64 (WOW64)' } else { 'x86' })))
+  Write-St ("Windows: {0}" -f ($(if (${env:ProgramFiles(x86)}) { 'x64 (WOW64)' } else { 'x86' })))
   foreach ($f in @('apdadrv.dll','StrGene.dll')) {
     Write-St ("{0}: {1}" -f $f, ($(if (Test-Path (Join-Path $Base $f)) { 'OK' } else { 'FALTA (causa crash)' })))
   }
@@ -81,12 +81,20 @@ function Refresh-St {
   Write-St ("Version 2.0.0: {0} ({1} refs)" -f ($(if ($c -ge 4) { 'OK' } else { 'revisar' }), $c))
   Write-St ''; Write-St 'Conecte la impresora por USB 2.0 ANTES de elegir modelo.'
   $Bar.Text = "Listo  |  $((Split-Path $t -Leaf))  |  v2.0.0"
+  $u = Test-UsbEpson
+  if ($u.Usb -and $u.Prn) { $Bar.Text += ("  |  USB {0}" -f $u.Prn[0].PortName) }
+  elseif ($u.Usb) { $Bar.Text += "  |  USB sin cola" } else { $Bar.Text += "  |  sin USB" }
 }
 function Set-Compat($t) {
   $k = 'HKCU:\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers'
   if (-not (Test-Path $k)) { New-Item $k -Force | Out-Null }
   Set-ItemProperty $k -Name $t -Value 'WIN7RTM HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE DISABLEFULLSCREENOPTIMIZATIONS DPIUNAWARE' -Force
   try { Unblock-File $t } catch {}
+}
+function Test-UsbEpson {
+  $eps = Get-PnpDevice | Where-Object { $_.InstanceId -match 'VID_04B8' -and $_.Status -eq 'OK' }
+  $pr = Get-Printer | Where-Object { $_.Name -match 'Epson|L1210|L3210|L3250|L3251|L3260|L5290' -and $_.PortName -match '^USB' }
+  return @{ Usb=$eps; Prn=$pr }
 }
 function Launch {
   $t = Get-Target
@@ -96,6 +104,10 @@ function Launch {
     return
   }
   Set-Compat $t
+  $chk = Test-UsbEpson
+  if (-not $chk.Usb) { Write-St 'AVISO: sin Epson USB VID_04B8. Conecta y enciende.'; if ([System.Windows.MessageBox]::Show('No veo Epson por USB. Conecta USB-B directo y enciende. Lanzar igual?','USB no detectada', 'YesNo','Warning') -ne 'Yes') { return } }
+  elseif (-not $chk.Prn) { Write-St 'AVISO: Epson USB vista pero sin cola USB00x.' }
+  else { Write-St (('Epson OK: {0} en {1}' -f $chk.Prn[0].Name, $chk.Prn[0].PortName)) }
   Write-St ("Lanzando {0} ..." -f (Split-Path $t -Leaf))
   Start-Process $t -WorkingDirectory $Base
 }

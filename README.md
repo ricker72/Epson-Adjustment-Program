@@ -1,6 +1,6 @@
 ---
 title: "Epson Reset — Adjustment Program L1210 L3210 L3250 L3251 L3260 L5290"
-description: "Resetea el contador Waste Ink Pad Counter. Guía completa, 6 modelos, Win 7/8/10/11."
+description: "Resetea el contador Waste Ink Pad Counter. Guía completa, 6 modelos, Win 8/8.1/10/11 + USB total. v2.0.0 con manifest embebido + instalador + Doctor USB."
 lang: es
 ---
 
@@ -10,13 +10,16 @@ lang: es
 
 ## 🔧 Adjustment Program — Waste Ink Pad Counter Reset 🔧
 
-### 🌱 EcoTank L1210 · L3210 · L3250 · L3251 · L3260 · L5290 RAW 🏢
+### 🌱 EcoTank L1210 · L3210 · L3250 · L3251 · L3260 · L5290 v2.0.0 🏢
 
-![Ver](https://img.shields.io/badge/Version-RAW_1.0.1.1-blue?style=for-the-badge&logo=epson&logoColor=white)
+> [!TIP]
+> 🆕 **v2.0.0 (Oct 2026):** manifest Win8/10/11 **incrustado** en el EXE, instalador `Program Files (x86)` + `Doctor USB` para 2.0 / 3.x / C / Hub / Dock / WSD. Ver [Novedades](#-novedades-v200-win81011--usb-total-) y [Actualización segura](#️-actualización-segura-sin-romper-nada-).
+
+![Ver](https://img.shields.io/badge/Version-v2.0.0-blue?style=for-the-badge&logo=epson&logoColor=white)
 ![Mod](https://img.shields.io/badge/Modelos-6_en_1-success?style=for-the-badge&logo=printer&logoColor=white)
-![Win](https://img.shields.io/badge/Windows-7_8_10_11-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-![x64](https://img.shields.io/badge/x64-WOW64_ready-purple?style=for-the-badge&logo=windows-terminal&logoColor=white)
-![USB](https://img.shields.io/badge/USB-2.0_directo-orange?style=for-the-badge&logo=usb&logoColor=white)
+![Win](https://img.shields.io/badge/Windows-8_8.1_10_11-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![x64](https://img.shields.io/badge/x64-WOW64_manifest_embedded-purple?style=for-the-badge&logo=windows-terminal&logoColor=white)
+![USB](https://img.shields.io/badge/USB-2.0_3.x_C_Doctor-orange?style=for-the-badge&logo=usb&logoColor=white)
 ![Admin](https://img.shields.io/badge/Admin-Requerido-red?style=for-the-badge&logo=shield&logoColor=white)
 
 [![MD](https://img.shields.io/badge/Markdown-GFM-083fa1?style=flat-square&logo=markdown)](https://github.github.com/gfm/)
@@ -42,6 +45,8 @@ lang: es
 - [❓ ¿De qué trata esta app?](#-de-qué-trata-esta-aplicación-)
 - [🖨️ Modelos que incluye](#️-modelos-que-incluye-6-en-1-)
 - [⚡ Inicio rápido 60 seg](#-inicio-rápido-60-segundos-)
+- [🆕 Novedades v2.0.0](#-novedades-v200-win81011--usb-total-)
+- [🛡️ Actualización segura](#️-actualización-segura-sin-romper-nada-)
 - [📁 Qué hay en tu carpeta](#-qué-hay-en-tu-carpeta-)
 - [🔌 Instalación y preparación](#-instalación-y-preparación-)
 - [🚀 Uso paso a paso](#-uso-paso-a-paso-6-pasos-)
@@ -125,6 +130,101 @@ flowchart TD
 
 ---
 
+## 🆕 Novedades v2.0.0 Win8/10/11 + USB total 🎉
+
+<div align="center">
+
+![New](https://img.shields.io/badge/Nuevo-v2.0.0-gold?style=for-the-badge)
+![Manifest](https://img.shields.io/badge/Manifest-Embebido-0078D6?style=for-the-badge)
+![Installer](https://img.shields.io/badge/Instalador-Inno_Portable-success?style=for-the-badge)
+![Doctor](https://img.shields.io/badge/Doctor-USB-orange?style=for-the-badge)
+
+</div>
+
+| 🆕 Qué cambió | 🔧 Antes RAW 1.0.1.1 | ✅ Ahora v2.0.0 |
+|:---|:---|:---|
+| 🪟 Manifest Win8/10/11 | 📄 Externo ignorado (interno vacío 86 bytes) | 💎 **Incrustado ID=1** `Win8+8.1+10/11 + requireAdmin + Common-Controls v6` verificado |
+| ⚙️ Cabecera PE | 4.0 sin LAA | 🚀 `6.0 + LAA + CheckSum 0x003CE176` vía WOW64 |
+| 📦 Instalador | 📁 Carpeta suelta, DLLs se pierden | 🏠 `EpsonReset.iss` (Inno) + `INSTALAR_EpsonReset.bat` → `Program Files (x86)` + accesos + `WIN7RTM + DPIUNAWARE` |
+| 🔌 Doctor USB | ❌ Solo "usa 2.0" | 🩺 `Doctor-USB.ps1/.bat`: detecta `USB00x OK` vs `WSD/RED falla`, `xHCI 3.x/C/Thunderbolt` vs `EHCI 2.0`, hubs, `VID_04B8`, apaga `Selective Suspend`, reinicia spooler |
+| 🖥️ Panel moderno | 🔍 Solo EXE/DLLs | 🛡️ + guardián USB: barra `USB USB001 / sin cola / sin USB`, bloquea lanzar sin USB |
+| ✍️ Firma | ❌ `NotSigned` | ⚠️ `Firmar-Setup.ps1` autofirma local (para distribuir compra Authenticode) |
+
+> [!NOTE]
+> 🏗️ Sigue 32-bit `0x14C` por WOW64. Sin código fuente no hay x64/ARM64 nativo, ni `ASLR/DEP/CFG`, ni driver `WHQL/EV`, ni `MSIX Store`. Con Secure Boot + Win11 necesitas driver firmado + USB-B directo.
+
+```mermaid
+flowchart LR
+    A[📦 RAW 1.0.1.1] --> B[💎 Manifest embebido]
+    B --> C[🏠 Instalador]
+    C --> D[🩺 Doctor USB]
+    D --> E[🖥️ Panel con guardián]
+    E --> F[🎉 v2.0.0 lista]
+    style F fill:#16a34a,color:#fff
+```
+
+---
+
+## 🛡️ Actualización segura sin romper nada 🔒
+
+> [!CAUTION]
+> ⚠️ No borres tu carpeta vieja hasta verificar la nueva. Un corte de luz o USB flojo a medio `Initialize` corrompe la EEPROM.
+
+### 0️⃣ Respaldo 1 min 💾
+
+```powershell
+# 📂 Copia tu kit actual por si algo sale mal
+Copy-Item "L1210, L3210, L3250, L3251, L3260, L5290 RAW 1.0.1.1" "BACKUP-RAW-1.0.1.1" -Recurse
+# ✅ Guarda también: modelo exacto + foto del error + puerto actual
+Get-Printer | Format-Table Name, PortName
+```
+
+### 1️⃣ Verificar paquete nuevo ✅
+
+```powershell
+# 🧪 Corre como admin en la carpeta nueva:
+.\Verificar-Instalacion.ps1
+# ✅ Espera: manifest embebido + requireAdmin + 5 archivos OK
+# 🖨️ Solo fallará "enciende Epson" si está apagada — es normal
+.\Test-Xaml.ps1
+# ✅ Espera: XAML launcher OK
+```
+
+### 2️⃣ Instalar sin choques 🏠
+
+1. 🔌 Desconecta USB, apaga impresora, cierra `Epson Status Monitor` + colas 🖨️
+2. 👑 Clic derecho `INSTALAR_EpsonReset.bat` → **Ejecutar como administrador** (o compila `EpsonReset.iss` con Inno si quieres Setup.exe)
+3. 🩺 Doble clic `Doctor-USB.bat` → `-Fix`: confirma `USB00x CORRECTO`, `Selective Suspend OFF`, compat `WIN7RTM` ✅
+4. 🔌 Conecta **USB-B directo <2m a USB 2.0 negro trasero** (sin hub), enciende 🟢
+5. 🌙 Abre `ABRIR_Panel_Moderno_v2.bat` → **Diagnosticar** → barra debe decir `USB USB001` 🎯
+6. 🖨️ Sigue [6 pasos](#-uso-paso-a-paso-6-pasos-) normal: `Select > Particular > Waste > Check > Initialize > apaga > Finish`
+
+### 3️⃣ Si algo sale mal ⏪ Rollback
+
+| 🔴 Síntoma | 🟢 Vuelta atrás segura |
+|:---|:---|
+| 💥 No abre / se cierra | 🔙 Borra carpeta nueva, renombra `BACKUP-RAW-1.0.1.1` a original, usa `.bat` viejo |
+| 🔌 Sin USB00x / WSD | 🔙 `Doctor-USB` te dice el puerto real → cambia en `Propiedades impresora > Puerto > USB001` |
+| ⬛ Ventanas negras | 🔙 `Aplicar compat` en panel pone `DPIUNAWARE` de nuevo |
+| 🦠 Antivirus borra | 🔙 Restaura de cuarentena + pon **toda** la carpeta en exclusiones antes de reinstalar |
+| 🛡️ SmartScreen azul | 🔙 Clic `Más info > Ejecutar de todas formas` (normal sin firma de pago) |
+
+> [!IMPORTANT]
+> ✅ Solo borra `BACKUP-RAW-1.0.1.1` + `AdjProg.exe.bak_*` cuando ya hiciste **un reset 0.00% exitoso** con v2.0.0. 🎊
+
+### 🔌 Guía rápida por conector
+
+| 🔌 Conector | ✅ Veredicto v2.0.0 |
+|:---|:---|
+| ⬛ USB-A 2.0 trasero + USB-B <2m | 💎 **IDEAL** úsalo siempre |
+| 🟦 USB-A 3.x azul SS | 🟡 Directo sin hub + `Selective Suspend OFF` (`Doctor -Fix` lo hace) |
+| 🔷 USB-C / Thunderbolt / USB4 / Dock | 🟡 Solo adaptador **con datos** + hub con corriente; mejor cambia a A 2.0 |
+| 🔌 Hub sin corriente / cable de móvil | 🔴 **FALLA** seguro — cable de datos corto |
+| 📶 WiFi / WSD / TCP-IP / `EP7EAAED` | 🔴 **NO sirve** para reset — cambia a `USB001` |
+
+
+---
+
 ## ⚡ Inicio rápido 60 segundos 🚀
 
 ```mermaid
@@ -156,7 +256,12 @@ flowchart LR
 | 📄 Archivo | 🎯 Para qué sirve | 🖱️ Cómo se usa |
 |:---|:---|:---|
 | 🟦 `AdjProg.exe` | ⚙️ Motor original del reset | Clic derecho → Admin 👑 |
-| ⚡ `AdjProg_Win10_x64ready.exe` | 🪟 Igual pero parcheado Win10/11 x64 | ✅ **Usa este** si el otro se cierra |
+| ⚡ `AdjProg_Win10_x64ready.exe` | 🪟 v2.0.0 manifest **embebido** Win8/10/11 + LAA | ✅ **Usa este** siempre |
+| 🏠 `INSTALAR_EpsonReset.bat` | 📦 Instalador portable a `Program Files (x86)` + accesos | 👑 **Clic derecho Admin (nuevo recomendado)** |
+| 🩺 `Doctor-USB.ps1` / `.bat` | 🔌 Diagnostica USB 2.0/3.x/C/Hub/WSD + aplica fix | ✅✅ **Corre antes del reset** |
+| ⚙️ `EpsonReset.iss` | 🏗️ Script Inno Setup 6 para `Setup.exe` firmable | `iscc EpsonReset.iss` |
+| ✍️ `Firmar-Setup.ps1` | 🛡️ Autofirma local (distribuir = cert pago) | `.\Firmar-Setup.ps1 -InstalarCert` |
+| ✅ `Verificar-Instalacion.ps1` | 🧪 Checklist manifest + archivos + USB | Corre tras actualizar |
 | 🚀 `INICIAR_AdjProg_Win8_10_x64.bat` | 🪄 Lanza todo con compat + admin solo | ✅✅ **Doble clic (recomendado)** |
 | 🌙 `ABRIR_Panel_Moderno_v2.bat` | 🎨 Abre panel bonito oscuro WPF | Doble clic → botón azul |
 | ⚙️ `AdjProg_Modern_Launcher.ps1` | 🧠 Código del panel moderno | Lo llama el .bat anterior |
@@ -316,8 +421,8 @@ Porque necesita abrir el puerto USB físico 🔌, leer la EEPROM 💾 y tocar el
 | 🖱️ Opción | 🎯 Qué hace |
 |:---|:---|
 | 🌙 `ABRIR_Panel_Moderno_v2.bat` | 🎨 Panel WPF oscuro nativo, título azul, tarjetas, botón azul, diagnóstico |
-| 🔵 Botón **Iniciar modo secuencial** | 👑 Pide admin + aplica compat + abre motor original |
-| 🔍 **Diagnosticar** | 🧪 Muestra EXE, admin, DLLs, versión 2.0.0 |
+| 🔵 Botón **Iniciar modo secuencial** | 👑 Pide admin + aplica compat + **bloquea si no hay USB** + abre motor |
+| 🔍 **Diagnosticar** | 🧪 Muestra EXE, admin, DLLs, versión 2.0.0 + **puerto USB real** |
 | 🛠️ **Aplicar compat** | ⚙️ Pone WIN7RTM + DPI off + RUNASADMIN |
 | ❓ **Ayuda** | 💡 Recuerda: USB → botón azul → Select → Particular |
 
@@ -457,12 +562,12 @@ git push -u origin main
 | 2️⃣ Windows | `11` 🪟 |
 | 3️⃣ Error | 📸 foto |
 
-### 🏁 L1210 · L3210 · L3250 · L3251 · L3260 · L5290 RAW 🏁
+### 🏁 L1210 · L3210 · L3250 · L3251 · L3260 · L5290 v2.0.0 🏁
 
 ![Epson](https://img.shields.io/badge/Epson-Reset-blue?style=for-the-badge&logo=epson&logoColor=white)
-![RAW](https://img.shields.io/badge/RAW-1.0.1.1-success?style=for-the-badge)
+![v200](https://img.shields.io/badge/v2.0.0-Manifest_USB-success?style=for-the-badge)
 ![Amor](https://img.shields.io/badge/Hecho_con-💙_Español-red?style=for-the-badge)
 
-*Gracias por usar Epson Reset* 🙏✨ · 📅 Octubre 2026 · 📘 GFM · 🐙 GitHub Ready
+*Gracias por usar Epson Reset* 🙏✨ · 📅 Octubre 2026 · 📘 GFM · 🐙 GitHub Ready · 🆕 v2.0.0 Win8/10/11 + USB total
 
 </div>
