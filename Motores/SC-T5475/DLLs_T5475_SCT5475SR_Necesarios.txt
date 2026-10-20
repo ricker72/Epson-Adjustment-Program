@@ -1,0 +1,44 @@
+DLLs NECESARIOS - EPSON SureColor T5475 (SCT5475SR / SC-T5475)
+Paquete Vida Util + Reset - v2.0 - Octubre 2026
+==============================================================
+
+ESTADO ACTUAL EN TU CARPETA Motores\SC-T5475\:
+[OK] apdadrv.dll (100 KB, SHA256 F2277C9F...) - nucleo comunicacion USB
+[OK] StrGene.dll (86 KB, SHA256 8E731F4D...) - generador de comandos
+Ambos copiados desde la raiz y verificados con hash.
+
+LISTA COMPLETA DE DLLs QUE USA EL SERVICE TOOL T5475:
+--------------------------------------------------------------
+1. apdadrv.dll ..... OBLIGATORIO, ya incluido. Habla con USB00x VID_04B8.
+   Sin este: Communication error / Port not found.
+2. StrGene.dll ..... OBLIGATORIO, ya incluido. Genera tramas Check/Initialize.
+   Sin este: el programa abre pero Check queda en blanco.
+3. ESRV.dll ........ OPCIONAL segun build (Epson Service Library).
+   Si tu AdjProg_SC-T5475.exe lo pide al abrir, copialo junto al exe.
+   Si no lo pide, no lo necesitas.
+4. E_JT50DD.dll / E_JT50FA.dll ... Drivers de lenguaje de plotter.
+   Vienen con el Printer Driver oficial, NO se copian a mano.
+   Se instalan con Epson_T5475_Driver.exe (Paso 3 de la guia).
+5. DLLs de Windows (NO copiar, ya estan en el sistema):
+   kernel32.dll, user32.dll, gdi32.dll, comctl32.dll, shell32.dll,
+   ole32.dll, advapi32.dll. Si falta alguno: instala
+   Visual C++ Redistributable x64 + .NET Framework 4.8.
+
+DONDE DEBEN ESTAR:
+  Motores\SC-T5475\AdjProg_SC-T5475.exe
+  Motores\SC-T5475\apdadrv.dll
+  Motores\SC-T5475\StrGene.dll
+  (los 3 en la MISMA carpeta, desbloqueados, ejecutados como admin)
+
+VERIFICACION RAPIDA:
+  1. Los 3 archivos juntos en la misma carpeta.
+  2. Clic derecho > Propiedades > Desbloquear cada uno.
+  3. Clic derecho exe > Ejecutar como administrador.
+  4. SELECT > SC-T5475 > USB001 debe listar sin error.
+  5. Si dice falta xxx.dll, dime el nombre exacto y te digo de donde sale.
+
+NOTA: apdadrv.dll y StrGene.dll son compartidos entre EcoTank L y
+SureColor T (mismo protocolo Epson). Por eso sirven los de tu pack
+L1210-L5290. No necesitas descargar otros de internet (riesgo virus).
+
+Soporte: indica modelo SCT5475SR + mensaje exacto si pide otro dll.

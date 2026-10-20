@@ -1,0 +1,145 @@
+MANUAL / GUIA PASO A PASO - EPSON SureColor T5475
+Reseteo Vida Util a 0 - Version 1.0 - Octubre 2026
+==============================================================
+
+1. PRESENTACION
+Bienvenido a la Guia T5475 (valida T3475/T5470/T5475M).
+Con esta guia: 1) Conectas por USB, 2) Entras en Modo
+Reparacion, 3) Instalas drivers, 4) Ejecutas T5475_Reset_Studio.exe (doble clic, Administrador) para diagnosticar VIDA UTIL y RESETEAR A 0.
+
+Cuando muestra Service required / Maintenance box llena /
+Service Request + codigo / luces parpadeando = contador al 100%.
+
+IMPORTANTE: La T5475 es plotter 36", NO usa AdjProg L1210-L5290.
+Necesitas el Service Tool especifico SC-T5475. Si usas L-series
+da Communication error. Usa el programa T5475 de tu carpeta.
+
+2. ADVERTENCIAS (LEER ANTES)
+1) Solo cable USB directo. NO WiFi/Red para resetear.
+2) No desconectes cable ni apagues PC durante Check/Initialize.
+3) Ejecuta SIEMPRE como Administrador.
+4) Cierra Status Monitor, LFP Remote Panel, Edge Print y colas.
+5) Si la Maintenance Box C13T699700 esta derramando, reemplazala.
+   El reset es software, no vacia tinta fisica.
+6) Si esta en garantia, consulta a Epson antes.
+
+3. REQUISITOS
+- PC Windows 10/11 64 bits.
+- Cable USB 2.0 A-B cuadrado, corto max 2m, SIN hub/dock.
+- T5475 con corriente a pared, con papel/rollo.
+- Drivers oficiales T5475 (ver Paso 3).
+- T5475_Reset_Studio.exe + sus DLLs en MISMA carpeta, desbloqueados.
+- Antivirus pausado o carpeta en Exclusiones.
+- Puerto USB 2.0 trasero (negro). Evita USB 3.x azul si falla.
+
+4. PASO 1: CONECTAR POR CABLE USB
+1. Apaga impresora (Power 3 seg) y apaga PC.
+2. Desconecta RED/Ethernet y desactiva WiFi en panel:
+   Configuracion > Ajustes generales > Red > Desactivar WiFi.
+3. Conecta USB-B cuadrado atras de T5475 a USB trasero PC,
+   directo, sin hub. Debe hacer clic.
+4. Enciende primero impresora (espera panel 100%), luego PC.
+5. Verifica: Panel de control > Dispositivos e impresoras >
+   debe aparecer EPSON SC-T5475 Series. Si sale Desconocido,
+   falta driver (ir a Paso 3).
+6. Deja encendida, sin cola, sin imprimir durante proceso.
+TIP: Programa solo lista USB001/USB002... Si ves WSD o TCP/IP
+NO sirve para reset, cambia a USB en Propiedades > Puertos.
+
+5. PASO 2: MODO REPARACION / SERVICIO
+A) Normal = solo Check. B) Reparacion = requerido para Reset.
+Como entrar (panel tactil 4.3 pulg):
+1. USB ya conectado.
+2. Apaga total: manten Power 3 seg > Aceptar. Espera 10 seg.
+3. MANTEN [Home (casita) + Ayuda (?) + Power] 5-7 seg.
+   Variante: [Atras + Home + Power].
+4. Pulsa Power al ver logo, SUELTA Power pero SIGUE con
+   Home+Ayuda 5 seg mas.
+5. Pantalla muestra Service Mode / Modo Servicio / Recovery.
+6. Suelta botones. Windows hara sonido nuevo dispositivo.
+Confirmacion: aparece S / ServMode. Programa la ve como
+SC-T5475 (Service).
+Si no entra: repite 15 seg apagada + 7 seg firmes. Prueba
+variante. NO toques Clear All / Init EEPROM / Head ID.
+Solo entra al modo y deja que el PROGRAMA hace el reset.
+Para salir: apaga Power 5 seg y enciende normal.
+
+6. PASO 3: DESCARGAR DRIVERS CORRESPONDIENTES
+1. Ve a https://epson.com/Support o epson.com.mx/soporte,
+   busca SureColor T5475 > Drivers > tu Windows 10/11 64-bit.
+2. Descarga: a) Printer Driver SC-T5475 (obligatorio),
+   b) Software Updater (opcional), c) LFP Remote Panel (opcional,
+   cerrarlo durante reset). Deben ser T5475 exacto, NO T5400/L-series.
+3. Instala con impresora ENCENDIDA y USB conectado:
+   Epson_T5475_Driver.exe > Siguiente > Aceptar > USB Directo > Finalizar.
+4. Verifica puerto: Configuracion > Impresoras > SC-T5475 >
+   Propiedades > Puertos > marcado USB001/USB002 (NO WSD, NO TCP/IP).
+   Si esta en WSD, cambia manual a USB00x > Aplicar.
+5. Reinicia PC una vez. Deja driver instalado.
+Si programa no lista USB, reinstala driver. Comando para ver puerto:
+  Get-Printer | Format-Table Name, PortName
+
+7. PASO 4: EJECUTAR PROGRAMA COMO ADMIN + DIAGNOSTICO + RESET A 0
+Previo: Modo Reparacion (Paso2) + USB (Paso1) + Driver OK (Paso3).
+Cierra todo Epson y colas. T5475_Reset_Studio.exe + DLLs en MISMA carpeta.
+A) MODO ADMINISTRADOR:
+1. Clic DERECHO sobre T5475_Reset_Studio.exe > Ejecutar como administrador > Si.
+   NUNCA doble clic normal. Sin admin falla USB.
+2. SmartScreen: Mas info > Ejecutar de todas formas.
+3. Antivirus: restaura y pon carpeta en Exclusiones.
+B) SELECT:
+4. Pulsa SELECT. Marca SC-T5475 (o T5470/T5475M). Port: USB001 (o Auto Selection). OK. Si Communication error = modelo o puerto mal, corrige (NO uses L3250/L5290/T5400).
+C) PARTICULAR ADJUSTMENT MODE:
+5. Pulsa PARTICULAR ADJUSTMENT MODE. Busca Waste Ink Pad Counter /
+   Maintenance Box Counter / Service Request Counter (segun version:
+   Maintenance Request Counter / Ink System Counter). OK.
+   Veras Main / Platen / Ink System.
+D) DIAGNOSTICO CHECK:
+6. Marca las 3 casillas (Main+Platen+Ink System). Pulsa CHECK.
+   Espera 5-10 seg. Muestra VIDA UTIL ej. Main 100.5% = LLENO.
+   Anota/foto. NO cierres ventana.
+E) RESET A 0 INITIALIZE:
+7. Marca de nuevo las 3 casillas. Pulsa INITIALIZE.
+8. Dialogo Are you sure? > OK.
+9. APAGA impresora con Power (pantalla se apaga). Espera 10-15 seg.
+   ESTE APAGADO ES OBLIGATORIO, si no NO se guarda.
+10. En programa pulsa FINISH/OK, cierra ventana.
+11. Enciende en NORMAL (Power normal, sin botones). Espera 1-2 min.
+RESULTADO: CHECK de nuevo = 0.00% en los 3. Se va Service required.
+Resumen: Select > Particular > Waste Ink > Check (diagnostica) >
+Initialize (resetea 0) > Apagar > Finish > Encender.
+
+8. VERIFICACION FINAL
+- Haz CHECK de nuevo: debe decir 0.00%.
+- Imprime Nozzle Check: Panel > Mantenimiento > Inyectores > Imprimir.
+- Imprime plano/foto A1 para confirmar.
+- Si persiste, repite Paso7 marcando 3 casillas AMBAS veces + apaga 15 seg.
+- Reactiva WiFi/Red si la usabas. Guarda foto 0% como comprobante.
+
+9. SOLUCION PROBLEMAS
+- Sin USB00x: cambia cable corto USB2.0 trasero, reinstala driver,
+  ejecuta admin, prueba otro puerto. Get-Printer para ver puerto.
+- Communication error: modelo mal en SELECT. Debe ser SC-T5475 exacto.
+Se cierra solo: da doble clic al .exe.
+- Check 0% pero sigue error: falto apagar. Repite Initialize + apaga
+  15 seg + Finish + desconecta 1 min + enciende.
+- Pide Key/Password: escribenos con serial (Panel>Estado>Info).
+- Vuelve rapido: Box fisica llena. Cambia C13T699700 + repite reset.
+- No entra Service Mode: 15 seg apagada + 7 seg firmes. Prueba variante.
+- Ventanas negras: Propiedades > Compatibilidad > Cambiar PPP alto.
+
+10. FAQ
+- Sirve T5475_Reset_Studio.exe? SI. Necesitas T5475_Reset_Studio.exe.
+- WiFi sirve? No. Solo USB directo.
+- Cada cuanto? Solo al pedir Maintenance llena (30-50 mil m2 aprox).
+- Win11? Si, admin + driver 64-bit.
+- Garantia? No dana, pero consulta a Epson si vigente.
+- Cambio caja? Recomendado C13T699700 si empapada/derrame.
+
+11. CONTACTO
+Cualquier duda contactanos y con gusto te ayudaremos.
+Indica: 1) Modelo+serial, 2) Windows + foto puerto USB00x,
+3) Foto error + valores CHECK, 4) Paso donde te quedaste
+(1-USB/2-Modo/3-Driver/4-Check-Initialize).
+Gracias por usar Guia T5475.
+FIN - T5475 USB + Modo Reparacion + Driver + Admin + Reset 0 (T5475_Reset_Studio.exe)

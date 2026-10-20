@@ -1,0 +1,28 @@
+# 🖨️ SC-T5475 Pack — Todo lo T5475 aquí, separado de L
+
+Doble clic en T5475_Reset_Studio.exe (aplicacion principal).
+
+PROGRAMA PRINCIPAL - DOBLE CLIC AQUI:
+  T5475_Reset_Studio.exe (12 MB, icono propio plotter azul + check verde)
+  Wizard 5 pasos: 1 Drivers > 2 USB > 3 SELF-DIAGNOSTIC > 4 Vida util > 5 Reset 0.
+  Menus: Archivo / Herramientas / Ayuda. Menu Info: detalles + @Ricker + repo.
+  Menu Acerca de: v3.0.0 + creador + https://github.com/ricker72/Epson-Adjustment-Program
+
+
+## Contenido (12 archivos, todo autocontenido)
+| # | Archivo | Para qué |
+|---|---------|----------|
+| 1 | T5475_Reset_Studio.exe | Aplicacion principal (doble clic aqui) |
+| 2 | ABRIR_T5475.vbs | Lanzador alternativo sin consola |
+| 4 | SC-T5475_VidaUtil_Reset.ps1 | Motor: drivers>USB>reparación>vida>reset 0 |
+| 5 | apdadrv.dll | USB VID_04B8 |
+| 6 | StrGene.dll | Check/Initialize |
+| 7 | DLLs_T5475_SCT5475SR_Necesarios.txt | Lista DLLs + hashes |
+| 8 | Guia_Epson_SureColor_T5475_Paso_a_Paso.txt | Guía 4 pasos detallada |
+| 9 | Guia_Epson_SureColor_T5475_Paso_a_Paso.md | Guía corta |
+| 10 | Guia_T5475_PROFESIONAL.md | Guía premium colores |
+| 11 | MANUAL_SC-T5475_VidaUtil_Reset.txt | Manual errores 00000008 |
+| 12 | Manual_SC-T5475_cpd58955.pdf | Manual oficial Epson |
+
+Falta solo tu `AdjProg_SC-T5475.exe` (Service Tool T-Series): cópialo aquí junto a los DLL.
+Los L (AdjProg.exe + L1210-L5290) quedan en la raíz, sin mezclarse. ✅

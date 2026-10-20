@@ -1,0 +1,64 @@
+MANUAL SC-T5475 Vida Util + Reset — Errores 00000008 / 00080000
+==============================================================
+Epson SureColor T-SC5475 (SC-T5475) — v1.0.0 @Ricker
+
+1. QUE SIGNIFICAN 00000008 / 00080000
+-------------------------------------
+Son bloqueo de plotter profesional por fin de vida util:
+- Maintenance cartridge T582000 lleno al 100%
+- Borderless / spit counter lleno al 100%
+El plotter se niega a imprimir hasta cambiar cartucho + reset a 0.
+NO es el Waste Ink Pad de EcoTank L. NO uses AdjProg EcoTank.
+
+2. ANTES DE TODO: DRIVERS OFICIALES (PASO 1 OBLIGATORIO)
+--------------------------------------------------------
+Descarga solo de Epson oficial (no driverpacks):
+https://epson.com/Support/Printers/Single-Function-Inkjet-Printers/SureColor-Series/Epson-SureColor-T5475/s/SPT_SCT5475SR
+- Drivers and Downloads > tu Windows > Printer Driver > Install
+- Agrega cola Epson SC-T5475 y verifica que imprime test
+- Si la cola dice Generic / IPP Class, reinstala: ese driver no sirve para reset
+La herramienta te bloquea si no hay driver Epson real.
+
+3. CONEXION USB-B DIRECTA (PASO 2 OBLIGATORIO)
+----------------------------------------------
+- Cable USB-B <2m a puerto trasero USB 2.0 negro, sin hub/dock/cable de movil
+- Enciende el plotter, verifica en Doctor-USB: VID_04B8 OK
+- Cola SC-T5475 debe estar en USB00x (Propiedades > Puertos)
+- WSD/TCP solo sirven para imprimir, NO para reset
+
+4. MODO REPARACION SELF-DIAGNOSTIC (PASO 3 OBLIGATORIO)
+--------------------------------------------------------
+1. Apaga con Power
+2. Manten OK + Menu pulsados y enciende 5 seg sin soltar
+3. Panel debe decir SELF-DIAGNOSTIC / SERVICE MODE / MAINTENANCE
+4. Conecta USB-B (driver ya instalado)
+Sin este modo el Service Tool da Communication error.
+
+5. EXAMINAR VIDA UTIL (PASO 4)
+------------------------------
+Boton verde del Panel o ABRIR_SC-T5475_VidaUtil_Reset.bat:
+- Lee ultimo JSON en Reportes\SC-T5475_vida_util.json
+- Te pide Maintenance % y Borderless % del panel si es primera vez
+- >90% = cambia T582000 pronto. 100% = bloqueo activo
+Cambio fisico T582000 (Manual oficial cpd58955):
+1. Plotter en READY, apagalo
+2. Abre tapa maintenance cartridge lateral
+3. Saca en vertical sin inclinar (tinta!), metelo en bolsa
+4. Inserta nuevo hasta el fondo, cierra tapa, enciende
+
+6. RESET A 0 (PASO 5, SOLO CON CARTUCHO NUEVO)
+-----------------------------------------------
+La herramienta pide doble confirmacion:
+- SI cambiaste T582000 + SI estas en SELF-DIAGNOSTIC + escribes RESET0
+- Si hay Service Tool: lo abre en SC-T5475 > Particular > Maintenance counter > Check > Initialize > Finish
+- Si no hay: hace reset LOGICO local JSON a 0 + guia para el fisico
+- Apaga 15 seg > enciende > READY sin 00000008/00080000
+
+7. MANUAL OFICIAL INTEGRADO
+----------------------------
+https://files.support.epson.com/docid/cpd5/cpd58955.pdf
+Guardalo como Motores\SC-T5475\Manual_SC-T5475_cpd58955.pdf para offline.
+La herramienta (tecla M) lo abre. Cubre reemplazo T582000 y mantenimiento.
+
+SEGURIDAD: reset sin cartucho nuevo = derrame. Solo USB. Solo Epson oficial.
+Soporte EcoTank L intacto: boton azul.

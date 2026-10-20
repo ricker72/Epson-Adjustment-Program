@@ -1,0 +1,10 @@
+# UTF-8
+AssemblyVersion=3.0.0.0
+FileVersion=3.0.0.0
+ProductVersion=3.0.0.0
+FileDescription=Epson SC-T5475 Reset Studio - @Ricker
+ProductName=Epson SC-T5475 Reset Studio
+CompanyName=Ricker - https://github.com/ricker72/Epson-Adjustment-Program
+LegalCopyright=(c) 2026 Ricker - Uso tecnico responsable
+OriginalFilename=T5475_Reset_Studio.exe
+InternalName=T5475_Reset_Studio
